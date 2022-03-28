@@ -15,8 +15,9 @@ DERBY_IMAGE_NAME:=db-derby/openjdk-11-db-derby
 
 .PHONY: build
 build:
-	$(CONTAINER_TOOL) build . -t $(DERBY_IMAGE_NAME):$(DERBY_VERSION) -t $(DERBY_IMAGE_NAME):latest
+	$(CONTAINER_TOOL) build . -t $(DERBY_IMAGE_NAME):$(DERBY_VERSION) -t $(DERBY_IMAGE_NAME):latest -f Dockerfile.derby
 
 .PHONY: run
 run:
-	$(CONTAINER_TOOL) run -d --rm --name "db-derby" -p 1527:1527 $(DERBY_IMAGE_NAME)
+# 	$(CONTAINER_TOOL) run -d --rm --name "db-derby" -p 1527:1527 $(DERBY_IMAGE_NAME)
+	$(CONTAINER_TOOL) run -d --rm --name "db-derby" -p 1527:1527 datagrip/derby-server

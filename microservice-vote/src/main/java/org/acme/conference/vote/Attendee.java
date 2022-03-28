@@ -2,8 +2,8 @@ package org.acme.conference.vote;
 
 import java.util.Objects;
 import javax.validation.constraints.NotBlank;
-import org.bson.codecs.pojo.annotations.BsonId;
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
+import org.bson.types.ObjectId;
 
 /**
  * Attendee entity
@@ -13,18 +13,15 @@ import io.quarkus.mongodb.panache.PanacheMongoEntity;
  */
 public class Attendee extends PanacheMongoEntity {
 
-    @BsonId
-    private String uuid;
-
     @NotBlank
     private String name;
 
     public String getId () {
-        return uuid;
+        return id.toString();
     }
 
     public void setId (String id) {
-        this.uuid = id;
+        this.id = new ObjectId(id);
     }
 
     public String getName () {
@@ -37,12 +34,12 @@ public class Attendee extends PanacheMongoEntity {
 
     @Override
     public String toString () {
-        return "Attendee [id=" + uuid + ", name=" + name + "]";
+        return "Attendee [id=" + getId() + ", name=" + name + "]";
     }
 
     @Override
     public int hashCode () {
-        return Objects.hash(uuid, name);
+        return Objects.hash(getId(), name);
     }
 
     @Override
@@ -54,7 +51,7 @@ public class Attendee extends PanacheMongoEntity {
         if (getClass() != obj.getClass())
             return false;
         Attendee other = (Attendee) obj;
-        if (!Objects.equals(this.uuid, other.uuid) || !Objects.equals(this.name, other.name))
+        if (!Objects.equals(this.id, other.id) || !Objects.equals(this.name, other.name))
             return false;
         return true;
     }

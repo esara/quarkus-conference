@@ -100,6 +100,31 @@ local.properties
 .scala_dependencies
 .worksheet
 
+# IntelliJ
+.idea
+*.ipr
+*.iml
+*.iws
+
+# NetBeans
+nb-configuration.xml
+
+# Visual Studio Code
 # https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore
 .vscode
 *.code-workspace
+.factorypath
+
+# OSX
+.DS_Store
+
+# Vim
+*.swp
+*.swo
+
+# patch
+*.orig
+*.rej
+
+# Local environment
+.env

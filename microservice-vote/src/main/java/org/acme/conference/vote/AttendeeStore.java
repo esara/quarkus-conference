@@ -11,10 +11,7 @@ import javax.validation.constraints.NotNull;
 @ApplicationScoped
 public class AttendeeStore {
 
-    private AttendeeIdGenerator generator = new AttendeeIdGenerator();
-
     public Attendee save (Attendee attendee) {
-        attendee.setId(generator.nextValue());
         attendee.persist();
         return attendee;
     }
